@@ -1,4 +1,4 @@
-// SERVER
+// ---SERVER---
 //Express
 const express = require("express");
 const app = express();
@@ -14,8 +14,7 @@ const cors = require("cors");
 
 // Allows cross origin request
 app.use(cors());
-     
-    
+
 // Mlab Connection
 const mlab = "mongodb://chase123:chase123@ds115595.mlab.com:15595/strom-centre";
 mongoose.connect(mlab, () => {
@@ -33,7 +32,7 @@ app.get("/", (req, res) => {
    res.redirect("/graphql");
 });
 
-////////////////////////////////////////////////////////
+
 app.listen(port, process.env.IP, function(){
    console.log("Server has started");
 });

@@ -520,7 +520,8 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _allElements__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./allElements */ "./pages/formBuilder/allElements.js");
+/* harmony import */ var _seed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seed */ "./pages/formBuilder/seed.js");
+/* harmony import */ var _allElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./allElements */ "./pages/formBuilder/allElements.js");
 var _jsxFileName = "C:\\Users\\scharr01\\Desktop\\strom-centre-graphql\\client\\pages\\formBuilder\\index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -544,6 +545,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+ //Seed
 
  //form elements
 
@@ -569,70 +572,7 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       inputCount: 0,
-      formElements: [{
-        id: 1,
-        name: "Input - Text",
-        elementType: "input",
-        description: "Enter Text",
-        value: "text",
-        type: "text",
-        added: false,
-        order: 1
-      }, {
-        id: 2,
-        name: "Input - Number",
-        elementType: "input",
-        description: "Enter Number",
-        value: "number",
-        type: "number",
-        added: false,
-        order: 1
-      }, {
-        id: 3,
-        name: "Input - Date",
-        elementType: "input",
-        description: "Enter Date",
-        value: "date",
-        type: "date",
-        added: false,
-        order: 1
-      }, {
-        id: 4,
-        name: "Textarea",
-        elementType: "textarea",
-        description: "Blank Textarea",
-        value: "team",
-        type: "text",
-        added: false,
-        order: 1
-      }, {
-        id: 5,
-        name: "Checkbox",
-        elementType: "input",
-        description: "Radio Button",
-        value: "",
-        type: "checkbox",
-        added: false,
-        order: 1
-      }, {
-        id: 6,
-        name: "Radio Button",
-        elementType: "input",
-        description: "Radio Button",
-        value: "",
-        type: "radio",
-        added: false,
-        order: 1
-      }, {
-        id: 7,
-        name: "Submit Button",
-        elementType: "input",
-        description: "Radio Button",
-        value: "",
-        type: "submit",
-        added: false,
-        order: 1
-      }] // DRAG AND DROP
+      formElements: _seed__WEBPACK_IMPORTED_MODULE_1__["default"] // DRAG AND DROP
       // store the temp data while dragging
 
     });
@@ -689,7 +629,7 @@ function (_Component) {
             className: "draggableItem",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 60
+              lineNumber: 56
             },
             __self: this
           }, elem.name)); // TRUE
@@ -710,7 +650,7 @@ function (_Component) {
             className: "draggableItem",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 75
+              lineNumber: 71
             },
             __self: this
           }, // Add the dynamic element to the page
@@ -721,21 +661,21 @@ function (_Component) {
         id: "formBuilder",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 84
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 85
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 90
+          lineNumber: 86
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -748,42 +688,42 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 87
         },
         __self: this
       }, inputs.false), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "controls",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96
+          lineNumber: 92
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.addInput,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 93
         },
         __self: this
       }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.removeInput,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 94
         },
         __self: this
       }, "-"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 101
+          lineNumber: 97
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "creator",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 102
+          lineNumber: 98
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -796,7 +736,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 103
+          lineNumber: 99
         },
         __self: this
       }, inputs.true)))));
@@ -807,6 +747,83 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (FormBuilder);
+
+/***/ }),
+
+/***/ "./pages/formBuilder/seed.js":
+/*!***********************************!*\
+  !*** ./pages/formBuilder/seed.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var formElements = [{
+  id: 1,
+  name: "Input - Text",
+  elementType: "input",
+  description: "Enter Text",
+  value: "text",
+  type: "text",
+  added: false,
+  order: 1
+}, {
+  id: 2,
+  name: "Input - Number",
+  elementType: "input",
+  description: "Enter Number",
+  value: "number",
+  type: "number",
+  added: false,
+  order: 1
+}, {
+  id: 3,
+  name: "Input - Date",
+  elementType: "input",
+  description: "Enter Date",
+  value: "date",
+  type: "date",
+  added: false,
+  order: 1
+}, {
+  id: 4,
+  name: "Textarea",
+  elementType: "textarea",
+  description: "Blank Textarea",
+  value: "team",
+  type: "text",
+  added: false,
+  order: 1
+}, {
+  id: 5,
+  name: "Checkbox",
+  elementType: "input",
+  description: "Radio Button",
+  value: "",
+  type: "checkbox",
+  added: false,
+  order: 1
+}, {
+  id: 6,
+  name: "Radio Button",
+  elementType: "input",
+  description: "Radio Button",
+  value: "",
+  type: "radio",
+  added: false,
+  order: 1
+}, {
+  id: 7,
+  name: "Submit Button",
+  elementType: "input",
+  description: "Radio Button",
+  value: "",
+  type: "submit",
+  added: false,
+  order: 1
+}];
+/* harmony default export */ __webpack_exports__["default"] = (formElements);
 
 /***/ }),
 

@@ -41,6 +41,16 @@ class FormBuilder extends Component {
         })
     }
 
+    // Removes unnecessary characters in name
+    removeCharacters = (name) => {
+        let n = name.toLocaleLowerCase()
+        return n.replace(/\s/g, '');
+    }
+
+    editInput = (e) => {
+        //
+    }
+
     render(){
         // Declare empty arrays to push information into
         var inputs = {
@@ -51,30 +61,33 @@ class FormBuilder extends Component {
         // Builds out the html depending on if it has been added or not
         this.state.formElements.forEach((elem) => {
             // FALSE
-            if(elem.added == false){
-                inputs[elem.added].push(
+                inputs[false].push(
                     <div onDragStart={(e) => this.onDragStart(e, elem.id)}
-                        draggable key={elem.id} 
+                        draggable key={elem.id}
                         className="draggableItem"
                     >{elem.name}</div>
                 )
             // TRUE
-            } else {
+            if(elem.added == true){
                 // Create the element
+                let elementID = this.removeCharacters(elem.name)+elem.order;
                 let element = React.createElement(elem.elementType, {
                     type: elem.type,
                     name: elem.value,
                     placeholder: elem.description,
-                    id: elem.value
+                    id: elementID
                 });
                 inputs[elem.added].push(
                     <div onDragStart={(e) => this.onDragStart(e, elem.id)}
-                        draggable key={elem.id} 
+                        draggable key={elem.id}
+                        on
                         className="draggableItem"
                     >
                         {// Add the dynamic element to the page
                             element
                         }
+                        <a onClick={this.editInput}>Edit</a>
+                        <a>Remove</a>
                     </div>
                 )   
             }
@@ -88,10 +101,6 @@ class FormBuilder extends Component {
                             onDragOver={(e) => this.onDragOver(e)}
                             onDrop={(e)=> this.onDrop(e, false)}>
                             {inputs.false}
-                        </div>
-                        <div className="controls">
-                            <button onClick={this.addInput}>+</button>
-                            <button onClick={this.removeInput}>-</button>
                         </div>
                     </div>
                     <div className="right">

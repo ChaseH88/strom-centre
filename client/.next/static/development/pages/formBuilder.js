@@ -612,6 +612,14 @@ function (_Component) {
       }));
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "removeCharacters", function (name) {
+      var n = name.toLocaleLowerCase();
+      return n.replace(/\s/g, '');
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "editInput", function (e) {//
+    });
+
     return _this;
   }
 
@@ -629,27 +637,28 @@ function (_Component) {
       };
       this.state.formElements.forEach(function (elem) {
         // FALSE
-        if (elem.added == false) {
-          inputs[elem.added].push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            onDragStart: function onDragStart(e) {
-              return _this2.onDragStart(e, elem.id);
-            },
-            draggable: true,
-            key: elem.id,
-            className: "draggableItem",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 56
-            },
-            __self: this
-          }, elem.name)); // TRUE
-        } else {
+        inputs[false].push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          onDragStart: function onDragStart(e) {
+            return _this2.onDragStart(e, elem.id);
+          },
+          draggable: true,
+          key: elem.id,
+          className: "draggableItem",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 65
+          },
+          __self: this
+        }, elem.name)); // TRUE
+
+        if (elem.added == true) {
           // Create the element
+          var elementID = _this2.removeCharacters(elem.name) + elem.order;
           var element = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(elem.elementType, {
             type: elem.type,
             name: elem.value,
             placeholder: elem.description,
-            id: elem.value
+            id: elementID
           });
           inputs[elem.added].push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             onDragStart: function onDragStart(e) {
@@ -657,35 +666,49 @@ function (_Component) {
             },
             draggable: true,
             key: elem.id,
+            on: true,
             className: "draggableItem",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 71
+              lineNumber: 81
             },
             __self: this
           }, // Add the dynamic element to the page
-          element));
+          element, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            onClick: _this2.editInput,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 89
+            },
+            __self: this
+          }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 90
+            },
+            __self: this
+          }, "Remove")));
         }
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "formBuilder",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84
+          lineNumber: 97
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 85
+          lineNumber: 98
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86
+          lineNumber: 99
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -698,42 +721,21 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87
+          lineNumber: 100
         },
         __self: this
-      }, inputs.false), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "controls",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 92
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.addInput,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 93
-        },
-        __self: this
-      }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.removeInput,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 94
-        },
-        __self: this
-      }, "-"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, inputs.false)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 106
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "creator",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 107
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -746,7 +748,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99
+          lineNumber: 108
         },
         __self: this
       }, inputs.true)))));

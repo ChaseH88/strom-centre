@@ -9,17 +9,19 @@ class FormBuilder extends Component {
     state = {
         inputCount: 0,
         formElements: [
-            {id: 1, name: "input", description: "this is a input", value: "firstName", type: "text", added: true},
-            {id: 2, name: "input", description: "this is a input", value: "lastName", type: "text", added: false},
-            {id: 3, name: "input", description: "this is a input", value: "email", type: "text", added: false}
+            {id: 1, name: "Input - Text", elementType: "input", description: "Enter Text", value: "text", type: "text", added: false, order: 1},
+            {id: 2, name: "Input - Number", elementType: "input", description: "Enter Number", value: "number", type: "number", added: false, order: 1},
+            {id: 3, name: "Input - Date", elementType: "input", description: "Enter Date", value: "date", type: "date", added: false, order: 1},
+            {id: 4, name: "Textarea", elementType: "textarea", description: "Blank Textarea", value: "team", type: "text", added: false, order: 1},
+            {id: 5, name: "Checkbox", elementType: "input", description: "Radio Button", value: "", type: "checkbox", added: false, order: 1},
+            {id: 6, name: "Radio Button", elementType: "input", description: "Radio Button", value: "", type: "radio", added: false, order: 1},
+            {id: 7, name: "Submit Button", elementType: "input", description: "Radio Button", value: "", type: "submit", added: false, order: 1}
         ]
     }
 
     // DRAG AND DROP
     // store the temp data while dragging
     onDragStart = (e, id) => {
-        console.clear();
-        console.log("Dragging:", id);
         e.dataTransfer.setData("id", id);
     }
     // removes default on element drop
@@ -31,8 +33,6 @@ class FormBuilder extends Component {
         let id = parseInt(e.dataTransfer.getData("id"));
         // Update the inputs object with new drop data
         let inputs = this.state.formElements.filter((elem) => {
-            console.log(elem);
-            console.log(id)
             if(elem.id === id){
                 elem.added = added
             }
@@ -52,22 +52,51 @@ class FormBuilder extends Component {
             false: []
         }
         // Sort the elements based off of added or not to the builder
+        // Builds out the html depending on if it has been added or not
         this.state.formElements.forEach((elem) => {
-            inputs[elem.added].push(
-                <div onDragStart={(e) => this.onDragStart(e, elem.id)}
-                    draggable key={elem.id} 
-                    className="draggableItem"
-                >{elem.name}</div>
-            )
+            // FALSE
+            if(elem.added == false){
+                inputs[elem.added].push(
+                    <div onDragStart={(e) => this.onDragStart(e, elem.id)}
+                        draggable key={elem.id} 
+                        className="draggableItem"
+                    >{elem.name}</div>
+                )
+            // TRUE
+            } else {
+                // Create the element
+                let element = React.createElement(elem.elementType, {
+                    type: elem.type,
+                    name: elem.value,
+                    placeholder: elem.description,
+                    id: elem.value
+                });
+                inputs[elem.added].push(
+                    <div onDragStart={(e) => this.onDragStart(e, elem.id)}
+                        draggable key={elem.id} 
+                        className="draggableItem"
+                    >
+                        {// Add the dynamic element to the page
+                            element
+                        }
+                    </div>
+                )   
+            }
         });
 
         return (
             <div id="formBuilder">
                 <div className="container">
                     <div className="left">
-                        {inputs.false}
-                        <button onClick={this.addInput}>Add Input</button>
-                        <button onClick={this.removeInput}>Remove Input</button>
+                        <div className="inputDragArea" 
+                            onDragOver={(e) => this.onDragOver(e)}
+                            onDrop={(e)=> this.onDrop(e, false)}>
+                            {inputs.false}
+                        </div>
+                        <div className="controls">
+                            <button onClick={this.addInput}>+</button>
+                            <button onClick={this.removeInput}>-</button>
+                        </div>
                     </div>
                     <div className="right">
                         <form className="creator">

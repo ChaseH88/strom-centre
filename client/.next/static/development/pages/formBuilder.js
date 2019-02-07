@@ -581,33 +581,73 @@ function (_Component) {
       inputCount: 0,
       formElements: [{
         id: 1,
-        name: "input",
-        description: "this is a input",
-        value: "firstName",
+        name: "Input - Text",
+        elementType: "input",
+        description: "Enter Text",
+        value: "text",
         type: "text",
-        added: true
+        added: false,
+        order: 1
       }, {
         id: 2,
-        name: "input",
-        description: "this is a input",
-        value: "lastName",
-        type: "text",
-        added: false
+        name: "Input - Number",
+        elementType: "input",
+        description: "Enter Number",
+        value: "number",
+        type: "number",
+        added: false,
+        order: 1
       }, {
         id: 3,
-        name: "input",
-        description: "this is a input",
-        value: "email",
+        name: "Input - Date",
+        elementType: "input",
+        description: "Enter Date",
+        value: "date",
+        type: "date",
+        added: false,
+        order: 1
+      }, {
+        id: 4,
+        name: "Textarea",
+        elementType: "textarea",
+        description: "Blank Textarea",
+        value: "team",
         type: "text",
-        added: false
+        added: false,
+        order: 1
+      }, {
+        id: 5,
+        name: "Checkbox",
+        elementType: "input",
+        description: "Radio Button",
+        value: "",
+        type: "checkbox",
+        added: false,
+        order: 1
+      }, {
+        id: 6,
+        name: "Radio Button",
+        elementType: "input",
+        description: "Radio Button",
+        value: "",
+        type: "radio",
+        added: false,
+        order: 1
+      }, {
+        id: 7,
+        name: "Submit Button",
+        elementType: "input",
+        description: "Radio Button",
+        value: "",
+        type: "submit",
+        added: false,
+        order: 1
       }] // DRAG AND DROP
       // store the temp data while dragging
 
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDragStart", function (e, id) {
-      console.clear();
-      console.log("Dragging:", id);
       e.dataTransfer.setData("id", id);
     });
 
@@ -619,11 +659,7 @@ function (_Component) {
       var id = parseInt(e.dataTransfer.getData("id")); // Update the inputs object with new drop data
 
       var inputs = _this.state.formElements.filter(function (elem) {
-        console.log(elem);
-        console.log(id);
-
         if (elem.id === id) {
-          console.log("there is a match");
           elem.added = added;
         }
 
@@ -648,70 +684,116 @@ function (_Component) {
       var inputs = {
         true: [],
         false: [] // Sort the elements based off of added or not to the builder
+        // Builds out the html depending on if it has been added or not
 
       };
       this.state.formElements.forEach(function (elem) {
-        inputs[elem.added].push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          onDragStart: function onDragStart(e) {
-            return _this2.onDragStart(e, elem.id);
-          },
-          draggable: true,
-          key: elem.id,
-          className: "draggableItem",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 58
-          },
-          __self: this
-        }, elem.name));
+        // FALSE
+        if (elem.added == false) {
+          inputs[elem.added].push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            onDragStart: function onDragStart(e) {
+              return _this2.onDragStart(e, elem.id);
+            },
+            draggable: true,
+            key: elem.id,
+            className: "draggableItem",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 60
+            },
+            __self: this
+          }, elem.name)); // TRUE
+        } else {
+          // Create the element
+          var element = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(elem.elementType, {
+            type: elem.type,
+            name: elem.value,
+            placeholder: elem.description,
+            id: elem.value
+          });
+          inputs[elem.added].push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            onDragStart: function onDragStart(e) {
+              return _this2.onDragStart(e, elem.id);
+            },
+            draggable: true,
+            key: elem.id,
+            className: "draggableItem",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 75
+            },
+            __self: this
+          }, // Add the dynamic element to the page
+          element));
+        }
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "formBuilder",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 88
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 89
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 90
         },
         __self: this
-      }, inputs.false, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inputDragArea",
+        onDragOver: function onDragOver(e) {
+          return _this2.onDragOver(e);
+        },
+        onDrop: function onDrop(e) {
+          return _this2.onDrop(e, false);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 91
+        },
+        __self: this
+      }, inputs.false), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "controls",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 96
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.addInput,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 97
         },
         __self: this
-      }, "Add Input"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.removeInput,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 98
         },
         __self: this
-      }, "Remove Input")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "-"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 101
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "creator",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 102
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -724,7 +806,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 103
         },
         __self: this
       }, inputs.true)))));
@@ -757,7 +839,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************************!*\
   !*** multi ./pages/formBuilder/index.js ***!
   \******************************************/
@@ -782,5 +864,5 @@ module.exports = dll_4860ad6bdcb3d0b7914c;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]));;
+},[[4,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=formBuilder.js.map

@@ -9898,7 +9898,7 @@ var _jsxFileName = "C:\\Users\\scharr01\\Desktop\\strom-centre-graphql\\client\\
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -9923,5 +9923,5 @@ module.exports = dll_4860ad6bdcb3d0b7914c;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]));;
+},[[3,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=index.js.map

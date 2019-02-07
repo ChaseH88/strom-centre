@@ -451,7 +451,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(FormBuilderTextArea)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      element: "input",
+      element: "textarea",
       name: "",
       type: "",
       description: "",
@@ -535,6 +535,8 @@ var _jsxFileName = "C:\\Users\\scharr01\\Desktop\\strom-centre-graphql\\client\\
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -576,32 +578,62 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(FormBuilder)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      formElements: [{}],
-      inputCount: 0
+      inputCount: 0,
+      formElements: [{
+        id: 1,
+        name: "input",
+        description: "this is a input",
+        value: "firstName",
+        type: "text",
+        added: true
+      }, {
+        id: 2,
+        name: "input",
+        description: "this is a input",
+        value: "lastName",
+        type: "text",
+        added: false
+      }, {
+        id: 3,
+        name: "input",
+        description: "this is a input",
+        value: "email",
+        type: "text",
+        added: false
+      }] // DRAG AND DROP
+      // store the temp data while dragging
+
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "addInput", function (e) {
-      e.preventDefault();
-      var current = _this.state.inputCount;
-      current++;
-
-      _this.setState({
-        inputCount: current
-      });
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDragStart", function (e, id) {
+      console.clear();
+      console.log("Dragging:", id);
+      e.dataTransfer.setData("id", id);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "removeInput", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDragOver", function (e) {
       e.preventDefault();
-      var current = _this.state.inputCount;
-      current--;
+    });
 
-      if (current < 0) {
-        current = 0;
-      }
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDrop", function (e, added) {
+      var id = parseInt(e.dataTransfer.getData("id")); // Update the inputs object with new drop data
 
-      _this.setState({
-        inputCount: current
-      });
+      var inputs = _this.state.formElements.filter(function (elem) {
+        console.log(elem);
+        console.log(id);
+
+        if (elem.id === id) {
+          console.log("there is a match");
+          elem.added = added;
+        }
+
+        return inputs;
+      }); // Update the state
+
+
+      _this.setState(_objectSpread({}, _this.state, {
+        inputs: inputs
+      }));
     });
 
     return _this;
@@ -610,63 +642,92 @@ function (_Component) {
   _createClass(FormBuilder, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      // Declare empty arrays to push information into
+      var inputs = {
+        true: [],
+        false: [] // Sort the elements based off of added or not to the builder
+
+      };
+      this.state.formElements.forEach(function (elem) {
+        inputs[elem.added].push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          onDragStart: function onDragStart(e) {
+            return _this2.onDragStart(e, elem.id);
+          },
+          draggable: true,
+          key: elem.id,
+          className: "draggableItem",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 58
+          },
+          __self: this
+        }, elem.name));
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "formBuilder",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 66
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 67
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 68
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, inputs.false, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.addInput,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 70
         },
         __self: this
       }, "Add Input"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.removeInput,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 71
         },
         __self: this
       }, "Remove Input")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 73
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "creator",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 74
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_allElements__WEBPACK_IMPORTED_MODULE_1__["FormBuilderInput"], {
-        props: this.state.inputCount,
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dragArea",
+        onDragOver: function onDragOver(e) {
+          return _this2.onDragOver(e);
+        },
+        onDrop: function onDrop(e) {
+          return _this2.onDrop(e, true);
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 75
         },
         __self: this
-      })))));
+      }, inputs.true)))));
     }
   }]);
 
@@ -696,7 +757,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************************!*\
   !*** multi ./pages/formBuilder/index.js ***!
   \******************************************/
@@ -721,5 +782,5 @@ module.exports = dll_4860ad6bdcb3d0b7914c;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]));;
+},[[3,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=formBuilder.js.map

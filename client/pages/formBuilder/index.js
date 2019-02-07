@@ -7,40 +7,75 @@ import {
 
 class FormBuilder extends Component {
     state = {
-        formElements: [{}],
-        inputCount: 0
+        inputCount: 0,
+        formElements: [
+            {id: 1, name: "input", description: "this is a input", value: "firstName", type: "text", added: true},
+            {id: 2, name: "input", description: "this is a input", value: "lastName", type: "text", added: false},
+            {id: 3, name: "input", description: "this is a input", value: "email", type: "text", added: false}
+        ]
     }
 
-    addInput = (e) => {
-        e.preventDefault();
-        let current = this.state.inputCount
-        current++
-        this.setState({
-            inputCount: current
-        });
-        
+    // DRAG AND DROP
+    // store the temp data while dragging
+    onDragStart = (e, id) => {
+        console.clear();
+        console.log("Dragging:", id);
+        e.dataTransfer.setData("id", id);
     }
-    removeInput = (e) => {
+    // removes default on element drop
+    onDragOver = (e) => {
         e.preventDefault();
-        let current = this.state.inputCount
-        current--
-        if (current < 0){current = 0}
-        this.setState({
-            inputCount: current
+    }
+    // gets the data that is being dragged
+    onDrop = (e, added) => {
+        let id = parseInt(e.dataTransfer.getData("id"));
+        // Update the inputs object with new drop data
+        let inputs = this.state.formElements.filter((elem) => {
+            console.log(elem);
+            console.log(id)
+            if(elem.id === id){
+                elem.added = added
+            }
+            return inputs;
         });
+        // Update the state
+        this.setState({
+            ...this.state,
+            inputs
+        })
     }
 
     render(){
+        // Declare empty arrays to push information into
+        var inputs = {
+            true: [],
+            false: []
+        }
+        // Sort the elements based off of added or not to the builder
+        this.state.formElements.forEach((elem) => {
+            inputs[elem.added].push(
+                <div onDragStart={(e) => this.onDragStart(e, elem.id)}
+                    draggable key={elem.id} 
+                    className="draggableItem"
+                >{elem.name}</div>
+            )
+        });
+
         return (
             <div id="formBuilder">
                 <div className="container">
                     <div className="left">
-                    <button onClick={this.addInput}>Add Input</button>
-                    <button onClick={this.removeInput}>Remove Input</button>
+                        {inputs.false}
+                        <button onClick={this.addInput}>Add Input</button>
+                        <button onClick={this.removeInput}>Remove Input</button>
                     </div>
                     <div className="right">
                         <form className="creator">
-                            <FormBuilderInput props={this.state.inputCount} />
+                            <div className="dragArea"
+                                onDragOver={(e) => this.onDragOver(e)}
+                                onDrop={(e)=> this.onDrop(e, true)}>
+                                {inputs.true}
+                            </div>
                         </form>
                     </div>
                 </div>

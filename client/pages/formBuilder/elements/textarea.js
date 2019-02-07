@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 
 class FormBuilderTextArea extends Component {
     state = {
-        element: "input",
+        element: "textarea",
         name: "",
         type: "",
         description: "",

@@ -5690,7 +5690,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\scharr01\\Desktop\\strom-centre-graphql\\client\\.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\Chase\\Documents\\code-projects\\strom-centre\\client\\.next");
       return error;
     }
   };
@@ -17966,7 +17966,7 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\scharr01\Desktop\strom-centre-graphql\client\node_modules\next\dist\client\next-dev */"./node_modules/next/dist/client/next-dev.js");
+module.exports = __webpack_require__(/*! C:\Users\Chase\Documents\code-projects\strom-centre\client\node_modules\next\dist\client\next-dev */"./node_modules/next/dist/client/next-dev.js");
 
 
 /***/ }),

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../../static/style.css'
 
 //Seed
 import formElements from './seed';

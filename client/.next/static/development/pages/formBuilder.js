@@ -99,7 +99,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "C:\\Users\\scharr01\\Desktop\\strom-centre-graphql\\client\\pages\\formBuilder\\elements\\input.js";
+var _jsxFileName = "C:\\Users\\Chase\\Documents\\code-projects\\strom-centre\\client\\pages\\formBuilder\\elements\\input.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -408,7 +408,7 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "C:\\Users\\scharr01\\Desktop\\strom-centre-graphql\\client\\pages\\formBuilder\\elements\\textarea.js";
+var _jsxFileName = "C:\\Users\\Chase\\Documents\\code-projects\\strom-centre\\client\\pages\\formBuilder\\elements\\textarea.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -530,9 +530,11 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _seed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seed */ "./pages/formBuilder/seed.js");
-/* harmony import */ var _allElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./allElements */ "./pages/formBuilder/allElements.js");
-var _jsxFileName = "C:\\Users\\scharr01\\Desktop\\strom-centre-graphql\\client\\pages\\formBuilder\\index.js";
+/* harmony import */ var _static_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../static/style.css */ "./static/style.css");
+/* harmony import */ var _static_style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_static_style_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _seed__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./seed */ "./pages/formBuilder/seed.js");
+/* harmony import */ var _allElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./allElements */ "./pages/formBuilder/allElements.js");
+var _jsxFileName = "C:\\Users\\Chase\\Documents\\code-projects\\strom-centre\\client\\pages\\formBuilder\\index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -555,6 +557,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
  //Seed
 
@@ -582,7 +585,7 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       inputCount: 0,
-      formElements: _seed__WEBPACK_IMPORTED_MODULE_1__["default"] // DRAG AND DROP
+      formElements: _seed__WEBPACK_IMPORTED_MODULE_2__["default"] // DRAG AND DROP
       // store the temp data while dragging
 
     });
@@ -646,7 +649,7 @@ function (_Component) {
           className: "draggableItem",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 65
+            lineNumber: 66
           },
           __self: this
         }, elem.name)); // TRUE
@@ -670,7 +673,7 @@ function (_Component) {
             className: "draggableItem",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 81
+              lineNumber: 82
             },
             __self: this
           }, // Add the dynamic element to the page
@@ -678,13 +681,13 @@ function (_Component) {
             onClick: _this2.editInput,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 89
+              lineNumber: 90
             },
             __self: this
           }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 90
+              lineNumber: 91
             },
             __self: this
           }, "Remove")));
@@ -694,21 +697,21 @@ function (_Component) {
         id: "formBuilder",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 98
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 99
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99
+          lineNumber: 100
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -721,21 +724,21 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 100
+          lineNumber: 101
         },
         __self: this
       }, inputs.false)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 106
+          lineNumber: 107
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "creator",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 108
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -748,7 +751,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 109
         },
         __self: this
       }, inputs.true)))));
@@ -877,7 +880,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************************!*\
   !*** multi ./pages/formBuilder/index.js ***!
   \******************************************/
@@ -902,5 +905,5 @@ module.exports = dll_4860ad6bdcb3d0b7914c;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]));;
+},[[4,"static/runtime/webpack.js","styles"]]]));;
 //# sourceMappingURL=formBuilder.js.map
